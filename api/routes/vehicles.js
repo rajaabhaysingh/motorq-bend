@@ -67,10 +67,10 @@ router.post("/", (req, res, next) => {
     office: req.body.office,
     status: {
       ignition: req.body.ignition,
-      speed: req.body.speed,
+      speed: parseInt(req.body.speed),
       location: {
-        lat: req.body.lat,
-        long: req.body.long,
+        lat: parseFloat(req.body.lat),
+        long: parseFloat(req.body.long),
       },
     },
   });

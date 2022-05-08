@@ -3,11 +3,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const env = require("dotenv");
+var morgan = require("morgan");
 
 const app = express();
 env.config();
 
 const vehicleRoutes = require("./api/routes/vehicles");
+
+// logging req
+app.use(morgan("combined"));
 
 // using body parser
 app.use(bodyParser.urlencoded({ extended: false }));
