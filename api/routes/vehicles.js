@@ -99,12 +99,16 @@ router.patch("/:id", (req, res, next) => {
       if (vehicle) {
         const { customerName, driver, office, licensePlate } = req.body;
 
-        return Vehicle.findByIdAndUpdate(req.params.id, {
-          customerName,
-          driver,
-          office,
-          licensePlate,
-        });
+        return Vehicle.findByIdAndUpdate(
+          req.params.id,
+          {
+            customerName,
+            driver,
+            office,
+            licensePlate,
+          },
+          { returnDocument: "after" }
+        );
       } else {
         return res.status(404).json({
           message: "The vehicle you want to edit doesn't exist.",
